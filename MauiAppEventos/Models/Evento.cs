@@ -15,11 +15,17 @@ namespace MauiAppEventos.Models
         public string Local { get; set; }
         public double CustoPorParticipante { get; set; }
 
-        public int DuracaoEmDias => (DataTermino - DataInicio).Days + 1;
+        public int DuracaoEmDias
+        {
+            get
+            {
+                TimeSpan intervalo = (DataTermino - DataInicio);
+                return (intervalo.Days+1);
+            }
+        }
+        
 
         public double CustoTotal => NumeroParticipantes * CustoPorParticipante;
-        //TEST DE GIT
-
-        
+                
     }
 }
